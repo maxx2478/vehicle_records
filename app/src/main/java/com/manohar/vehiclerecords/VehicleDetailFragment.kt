@@ -18,6 +18,7 @@ class VehicleDetailFragment : Fragment() {
     var fueltypex:TextView?=null
     var transtypesx:TextView?=null
     var maintitle:TextView?=null
+    var back:ImageView?=null
 
     var regnox:TextView?=null
     var root:View?=null
@@ -73,12 +74,15 @@ class VehicleDetailFragment : Fragment() {
         image = root.findViewById(R.id.imageview)
         regnox = root.findViewById(R.id.regno)
         maintitle = root.findViewById(R.id.headertitle)
+        back = root.findViewById(R.id.back)
+        back!!.setOnClickListener { requireActivity().onBackPressed() }
         regno = requireArguments().getString("regno")
         classx = requireArguments().getString("class")
         make = requireArguments().getString("make")
         model = requireArguments().getString("model")
         fueltype = requireArguments().getString("fueltype")
         transtype = requireArguments().getString("transtype")
+
 
         setData()
     }

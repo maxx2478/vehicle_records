@@ -8,9 +8,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
+import androidx.navigation.NavOptions
 import androidx.navigation.Navigation
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.NavHostFragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import androidx.room.Room
 import com.manohar.vehiclerecords.R
@@ -22,6 +22,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
+
 class VehicleAdapter : RecyclerView.Adapter<vehicleViewHolder>
 {
 
@@ -32,7 +33,7 @@ class VehicleAdapter : RecyclerView.Adapter<vehicleViewHolder>
     private var sessionManager: SharedPreferences?=null
     lateinit var roomDB: RoomDB
 
-    constructor(array: ArrayList<String>, context:Context, activity:String, view: View)
+    constructor(array: ArrayList<String>, context: Context, activity: String, view: View)
     {
         this.array = array
         this.context = context
@@ -77,7 +78,7 @@ class VehicleAdapter : RecyclerView.Adapter<vehicleViewHolder>
 
         else if (activity.equals("model", ignoreCase = true))
         {
-            holder.itemView.setOnClickListener(object : View.OnClickListener{
+            holder.itemView.setOnClickListener(object : View.OnClickListener {
                 override fun onClick(v: View?) {
                     val bundle = Bundle()
                     bundle.putString("regno", sessionManager!!.getString("regno", " "))
@@ -97,7 +98,7 @@ class VehicleAdapter : RecyclerView.Adapter<vehicleViewHolder>
         }
         else if (activity.equals("fueltype", ignoreCase = true))
         {
-            holder.itemView.setOnClickListener(object : View.OnClickListener{
+            holder.itemView.setOnClickListener(object : View.OnClickListener {
                 override fun onClick(v: View?) {
 
                     val bundle = Bundle()
@@ -126,12 +127,12 @@ class VehicleAdapter : RecyclerView.Adapter<vehicleViewHolder>
                     bundle.putString("transtype", array?.get(position))
 
                     val vehicleModel = VehicleModel(
-                        sessionManager!!.getString("regno", " ")!!,
-                        sessionManager!!.getString("class", " ")!!,
-                        sessionManager!!.getString("make", " ")!!,
-                        sessionManager!!.getString("model", " ")!!,
-                        sessionManager!!.getString("fueltype", " ")!!,
-                        array?.get(position)!!
+                            sessionManager!!.getString("regno", " ")!!,
+                            sessionManager!!.getString("class", " ")!!,
+                            sessionManager!!.getString("make", " ")!!,
+                            sessionManager!!.getString("model", " ")!!,
+                            sessionManager!!.getString("fueltype", " ")!!,
+                            array?.get(position)!!
                     )
 
                     CoroutineScope(Dispatchers.IO).launch {
@@ -142,9 +143,10 @@ class VehicleAdapter : RecyclerView.Adapter<vehicleViewHolder>
                         }
                     }
 
+                            val controller = Navigation.findNavController(view!!)
+                            controller.popBackStack(R.id.transmissiontypesFragment, true);
+                            controller.navigate(R.id.homeScreenFragment, null)
 
-                    Navigation.findNavController(view!!)
-                        .navigate(R.id.action_transmissiontypesFragment_to_homeScreenFragment)
                 }
 
             })
@@ -160,7 +162,7 @@ class VehicleAdapter : RecyclerView.Adapter<vehicleViewHolder>
 
 }
 
-class vehicleViewHolder(view:View): RecyclerView.ViewHolder(view)
+class vehicleViewHolder(view: View): RecyclerView.ViewHolder(view)
 {
     val title: TextView = view.findViewById(R.id.title)
 

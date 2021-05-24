@@ -13,6 +13,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.manohar.vehiclerecords.R
+import com.manohar.vehiclerecords.adapters.TransmissionAdapter
 import com.manohar.vehiclerecords.adapters.VehicleAdapter
 import com.manohar.vehiclerecords.network.ApiService
 import com.manohar.vehiclerecords.utils.SessionManager
@@ -29,7 +30,7 @@ class TransmissiontypesFragment : Fragment() {
     var model:String?=null
     var fueltype:String?=null
     private var sessionManager: SharedPreferences?=null
-    lateinit var vehicleAdapter: VehicleAdapter
+    lateinit var vehicleAdapter: TransmissionAdapter
     private var contextx: Context? = null
     var array:ArrayList<String>?=null
     var title: TextView?= null
@@ -54,7 +55,7 @@ class TransmissiontypesFragment : Fragment() {
         root =  inflater.inflate(R.layout.fragment_transmissiontypes, container, false)
 
         initializeViews(root)
-        vehicleAdapter = VehicleAdapter(arrayListOf(), requireContext(), "transtype", root!!)
+        vehicleAdapter = TransmissionAdapter(arrayListOf(), requireContext(), "transtype", root!!, this@TransmissiontypesFragment)
         recyclerView!!.adapter = vehicleAdapter
 
 
