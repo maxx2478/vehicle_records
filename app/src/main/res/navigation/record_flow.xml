@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/record_flow"
+    app:startDestination="@id/homeScreenFragment">
+
+    <fragment
+        android:id="@+id/homeScreenFragment"
+        android:name="com.manohar.vehiclerecords.views.vehiclerecordFragments.HomeScreenFragment"
+        android:label="fragment_home_screen"
+        tools:layout="@layout/fragment_home_screen" >
+        <action
+            android:id="@+id/action_homeScreenFragment_to_regNumberFragment2"
+            app:destination="@id/regNumberFragment" />
+        <action
+            android:id="@+id/action_homeScreenFragment_to_vehicleDetailFragment"
+            app:destination="@id/vehicleDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/regNumberFragment"
+        android:name="com.manohar.vehiclerecords.views.vehiclerecordFragments.RegNumberFragment"
+        android:label="fragment_reg_number"
+        tools:layout="@layout/fragment_reg_number" >
+        <action
+            android:id="@+id/action_regNumberFragment_to_classType"
+            app:destination="@id/classType" />
+    </fragment>
+    <fragment
+        android:id="@+id/classType"
+        android:name="com.manohar.vehiclerecords.views.vehiclerecordFragments.ClassType"
+        android:label="fragment_class_type"
+        tools:layout="@layout/fragment_class_type" >
+        <action
+            android:id="@+id/action_classType_to_makeBrandFragment"
+            app:destination="@id/makeBrandFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/makeBrandFragment"
+        android:name="com.manohar.vehiclerecords.views.vehiclerecordFragments.MakeBrandFragment"
+        android:label="fragment_make_brand"
+        tools:layout="@layout/fragment_make_brand" >
+        <action
+            android:id="@+id/action_makeBrandFragment_to_modelFragment"
+            app:destination="@id/modelFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/modelFragment"
+        android:name="com.manohar.vehiclerecords.views.vehiclerecordFragments.ModelFragment"
+        android:label="fragment_model"
+        tools:layout="@layout/fragment_model" >
+        <action
+            android:id="@+id/action_modelFragment_to_fueltypeFragment"
+            app:destination="@id/fueltypeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/fueltypeFragment"
+        android:name="com.manohar.vehiclerecords.views.vehiclerecordFragments.FueltypeFragment"
+        android:label="fragment_fueltype"
+        tools:layout="@layout/fragment_fueltype" >
+        <action
+            android:id="@+id/action_fueltypeFragment_to_transmissiontypesFragment"
+            app:destination="@id/transmissiontypesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/transmissiontypesFragment"
+        android:name="com.manohar.vehiclerecords.views.vehiclerecordFragments.TransmissiontypesFragment"
+        android:label="fragment_transmissiontypes"
+        tools:layout="@layout/fragment_transmissiontypes" >
+        <action
+            android:id="@+id/action_transmissiontypesFragment_to_homeScreenFragment"
+            app:destination="@id/homeScreenFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/vehicleDetailFragment"
+        android:name="com.manohar.vehiclerecords.VehicleDetailFragment"
+        android:label="fragment_vehicle_detail"
+        tools:layout="@layout/fragment_vehicle_detail" />
+</navigation>
